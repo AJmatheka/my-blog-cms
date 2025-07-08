@@ -1,3 +1,73 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom styles for react-mde */
+.prose-editor .react-mde {
+  @apply bg-champagne_pink-800/20 border border-sage-300/20 rounded-lg overflow-hidden;
+}
+
+.prose-editor .mde-header {
+  @apply bg-champagne_pink-800/30 border-b border-sage-300/20;
+}
+
+.prose-editor .mde-header .mde-tabs button {
+  @apply text-sage-400 hover:text-buff-400 transition-colors;
+}
+
+.prose-editor .mde-header .mde-tabs button.selected {
+  @apply text-buff-400 border-b-2 border-buff-400;
+}
+
+.prose-editor .mde-text {
+  @apply bg-transparent text-reseda_green-100;
+}
+
+.prose-editor .mde-text textarea {
+  @apply bg-transparent text-reseda_green-100 placeholder-sage-400 border-none focus:outline-none;
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+.prose-editor .mde-preview .mde-preview-content {
+  @apply text-sage-200 bg-transparent;
+}
+
+.prose-editor .mde-preview .mde-preview-content h1,
+.prose-editor .mde-preview .mde-preview-content h2,
+.prose-editor .mde-preview .mde-preview-content h3 {
+  @apply text-reseda_green-100 font-serif;
+}
+
+.prose-editor .mde-preview .mde-preview-content p {
+  @apply text-sage-200 leading-relaxed;
+}
+
+.prose-editor .mde-preview .mde-preview-content blockquote {
+  @apply border-l-4 border-buff-400 pl-4 text-sage-300 italic;
+}
+
+.prose-editor .mde-preview .mde-preview-content code {
+  @apply bg-champagne_pink-800/30 text-buff-300 px-2 py-1 rounded;
+}
+
+.prose-editor .mde-preview .mde-preview-content pre {
+  @apply bg-champagne_pink-800/30 p-4 rounded overflow-x-auto;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-champagne_pink-800/20;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-sage-400/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-sage-400/70;
+}
