@@ -19,17 +19,17 @@ export default function Layout({ children, showHeader = true }: LayoutProps) {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-cream-100">
       {showHeader && (
-        <header className="border-b border-neutral-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+        <header className="border-b border-sage-200 bg-cream-50/80 backdrop-blur-sm sticky top-0 z-50">
           <div className="max-w-5xl mx-auto px-8 py-6">
             <div className="flex items-center justify-between">
               <div 
                 onClick={() => navigate('/dashboard')}
                 className="cursor-pointer"
               >
-                <div className="w-8 h-8 bg-neutral-900 rounded-full mb-2"></div>
-                <h1 className="text-lg font-medium text-neutral-900 tracking-tight">
+                <div className="w-8 h-8 bg-warm-600 rounded-full mb-2"></div>
+                <h1 className="text-lg font-medium text-warm-900 tracking-tight">
                   Moments
                 </h1>
               </div>
@@ -38,13 +38,13 @@ export default function Layout({ children, showHeader = true }: LayoutProps) {
                 <div className="flex items-center gap-8">
                   <button
                     onClick={() => navigate('/editor')}
-                    className="text-neutral-600 hover:text-neutral-900 transition-colors text-sm font-medium"
+                    className="text-warm-700 hover:text-warm-900 transition-colors text-sm font-medium"
                   >
                     Write
                   </button>
                   <button
                     onClick={handleSignOut}
-                    className="text-neutral-500 hover:text-neutral-700 transition-colors text-sm"
+                    className="text-warm-600 hover:text-warm-800 transition-colors text-sm"
                   >
                     Sign out
                   </button>

@@ -40,11 +40,11 @@ export default function Dashboard() {
         {/* Hero Section with massive negative space */}
         <div className="pt-32 pb-40">
           <div className="max-w-4xl">
-            <h1 className="text-7xl font-extralight text-neutral-900 mb-12 tracking-tight leading-[0.9] -ml-1">
+            <h1 className="text-7xl font-extralight text-warm-900 mb-12 tracking-tight leading-[0.9] -ml-1">
               Moments that<br />matter —
             </h1>
-            <div className="w-24 h-px bg-neutral-300 mb-12"></div>
-            <p className="text-xl text-neutral-500 leading-relaxed max-w-2xl font-light">
+            <div className="w-24 h-px bg-sage-300 mb-12"></div>
+            <p className="text-xl text-warm-700 leading-relaxed max-w-2xl font-light">
               We change the world with our thoughts, experiences, and actions. 
               Every moment is valuable, every experience worth remembering.
             </p>
@@ -54,7 +54,7 @@ export default function Dashboard() {
         {/* Minimal Controls */}
         <div className="flex items-end justify-between mb-32">
           <div className="flex flex-col gap-2">
-            <span className="text-xs text-neutral-400 uppercase tracking-wider font-medium">
+            <span className="text-xs text-warm-600 uppercase tracking-wider font-medium">
               Search
             </span>
             <input
@@ -62,16 +62,16 @@ export default function Dashboard() {
               placeholder="Find stories"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="bg-transparent border-none text-2xl font-light text-neutral-900 placeholder-neutral-400 focus:outline-none w-80"
+              className="bg-transparent border-none text-2xl font-light text-warm-900 placeholder-warm-600 focus:outline-none w-80"
             />
-            <div className="w-full h-px bg-neutral-200 mt-2"></div>
+            <div className="w-full h-px bg-sage-200 mt-2"></div>
           </div>
           
           <button
             onClick={() => navigate("/editor")}
-            className="text-neutral-500 hover:text-neutral-900 transition-all duration-300 font-light text-lg group"
+            className="text-warm-700 hover:text-warm-900 transition-all duration-300 font-light text-lg group"
           >
-            <span className="border-b border-transparent group-hover:border-neutral-300 transition-all duration-300">
+            <span className="border-b border-transparent group-hover:border-sage-300 transition-all duration-300">
               Write new story
             </span>
           </button>
@@ -82,16 +82,16 @@ export default function Dashboard() {
           {filteredPosts.length === 0 ? (
             <div className="text-center py-40">
               <div className="max-w-md mx-auto">
-                <div className="w-1 h-24 bg-neutral-200 mx-auto mb-12"></div>
-                <p className="text-neutral-400 text-xl font-light mb-12 leading-relaxed">
+                <div className="w-1 h-24 bg-sage-200 mx-auto mb-12"></div>
+                <p className="text-warm-600 text-xl font-light mb-12 leading-relaxed">
                   No stories yet.<br />
                   Your first story awaits.
                 </p>
                 <button
                   onClick={() => navigate("/editor")}
-                  className="text-neutral-600 hover:text-neutral-900 transition-all duration-300 font-light text-lg group"
+                  className="text-warm-700 hover:text-warm-900 transition-all duration-300 font-light text-lg group"
                 >
-                  <span className="border-b border-transparent group-hover:border-neutral-300 transition-all duration-300">
+                  <span className="border-b border-transparent group-hover:border-sage-300 transition-all duration-300">
                     Begin writing
                   </span>
                 </button>
@@ -105,22 +105,22 @@ export default function Dashboard() {
                     {/* Content */}
                     <div className="col-span-7">
                       <div className="mb-8">
-                        <span className="text-xs text-neutral-400 uppercase tracking-wider font-medium">
+                        <span className="text-xs text-warm-600 uppercase tracking-wider font-medium">
                           {String(index + 1).padStart(2, '0')}
                         </span>
                       </div>
                       
-                      <h2 className="text-4xl font-extralight text-neutral-900 mb-8 group-hover:text-neutral-600 transition-all duration-500 leading-tight tracking-tight">
+                      <h2 className="text-4xl font-extralight text-warm-900 mb-8 group-hover:text-warm-700 transition-all duration-500 leading-tight tracking-tight">
                         {post.title}
                       </h2>
                       
-                      <div className="w-16 h-px bg-neutral-200 mb-8"></div>
+                      <div className="w-16 h-px bg-sage-200 mb-8"></div>
                       
-                      <p className="text-neutral-500 leading-relaxed text-lg font-light mb-12 max-w-lg">
+                      <p className="text-warm-700 leading-relaxed text-lg font-light mb-12 max-w-lg">
                         {post.content?.replace(/[#*`]/g, '').substring(0, 180)}...
                       </p>
                       
-                      <div className="flex items-center gap-8 text-sm text-neutral-400">
+                      <div className="flex items-center gap-8 text-sm text-warm-600">
                         <span className="font-light">
                           {post.createdAt?.toDate().toLocaleDateString('en-US', {
                             year: 'numeric',
@@ -132,7 +132,7 @@ export default function Dashboard() {
                         {post.tags?.length > 0 && (
                           <div className="flex gap-4">
                             {post.tags.slice(0, 2).map((tag: string) => (
-                              <span key={tag} className="text-neutral-400 font-light">
+                              <span key={tag} className="text-warm-600 font-light">
                                 {tag}
                               </span>
                             ))}
@@ -143,7 +143,7 @@ export default function Dashboard() {
                     
                     {/* Minimal image placeholder */}
                     <div className="col-span-5">
-                      <div className="aspect-[5/4] bg-gradient-to-br from-neutral-100 via-neutral-50 to-white border border-neutral-100 group-hover:border-neutral-200 transition-all duration-500"></div>
+                      <div className="aspect-[5/4] bg-gradient-to-br from-sage-100 via-cream-100 to-mint-100 border border-sage-200 group-hover:border-sage-300 transition-all duration-500 rounded-lg"></div>
                     </div>
                   </div>
                   
@@ -154,7 +154,7 @@ export default function Dashboard() {
                         e.stopPropagation()
                         navigate(`/editor/${post.id}`)
                       }}
-                      className="text-neutral-400 hover:text-neutral-700 transition-colors text-sm font-light"
+                      className="text-warm-600 hover:text-warm-800 transition-colors text-sm font-light"
                     >
                       Edit
                     </button>
@@ -163,7 +163,7 @@ export default function Dashboard() {
                         e.stopPropagation()
                         handleDelete(post.id)
                       }}
-                      className="text-neutral-400 hover:text-red-400 transition-colors text-sm font-light"
+                      className="text-warm-600 hover:text-red-500 transition-colors text-sm font-light"
                     >
                       Delete
                     </button>

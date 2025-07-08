@@ -24,7 +24,7 @@ export default function ViewPost() {
   if (!post) return (
     <Layout>
       <div className="max-w-4xl mx-auto px-8 py-20">
-        <p className="text-neutral-500">Loading...</p>
+        <p className="text-warm-600">Loading...</p>
       </div>
     </Layout>
   )
@@ -34,11 +34,11 @@ export default function ViewPost() {
       <article className="max-w-4xl mx-auto px-8 py-20">
         {/* Header */}
         <header className="mb-20">
-          <h1 className="text-6xl font-light text-neutral-900 mb-8 leading-tight tracking-tight">
+          <h1 className="text-6xl font-light text-warm-900 mb-8 leading-tight tracking-tight">
             {post.title}
           </h1>
           
-          <div className="flex items-center gap-8 text-neutral-500 text-sm mb-12">
+          <div className="flex items-center gap-8 text-warm-600 text-sm mb-12">
             <time>
               {post.createdAt?.toDate().toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -50,7 +50,7 @@ export default function ViewPost() {
             {post.tags?.length > 0 && (
               <div className="flex gap-3">
                 {post.tags.map((tag: string) => (
-                  <span key={tag} className="text-neutral-400">
+                  <span key={tag} className="text-warm-600">
                     #{tag}
                   </span>
                 ))}
@@ -59,7 +59,7 @@ export default function ViewPost() {
           </div>
           
           {/* Hero image placeholder */}
-          <div className="aspect-[16/9] bg-gradient-to-br from-orange-200 via-orange-300 to-orange-400 rounded-lg mb-16"></div>
+          <div className="aspect-[16/9] bg-gradient-to-br from-sage-200 via-warm-200 to-mint-200 rounded-lg mb-16"></div>
         </header>
         
         {/* Content */}
@@ -67,22 +67,22 @@ export default function ViewPost() {
           <ReactMarkdown 
             remarkPlugins={[remarkGfm]}
             components={{
-              h1: ({children}) => <h1 className="text-4xl font-light text-neutral-900 mb-8 mt-16 leading-tight">{children}</h1>,
-              h2: ({children}) => <h2 className="text-3xl font-light text-neutral-900 mb-6 mt-12 leading-tight">{children}</h2>,
-              h3: ({children}) => <h3 className="text-2xl font-light text-neutral-900 mb-4 mt-10 leading-tight">{children}</h3>,
-              p: ({children}) => <p className="text-neutral-700 leading-relaxed mb-8 text-xl">{children}</p>,
+              h1: ({children}) => <h1 className="text-4xl font-light text-warm-900 mb-8 mt-16 leading-tight">{children}</h1>,
+              h2: ({children}) => <h2 className="text-3xl font-light text-warm-900 mb-6 mt-12 leading-tight">{children}</h2>,
+              h3: ({children}) => <h3 className="text-2xl font-light text-warm-900 mb-4 mt-10 leading-tight">{children}</h3>,
+              p: ({children}) => <p className="text-warm-800 leading-relaxed mb-8 text-xl">{children}</p>,
               blockquote: ({children}) => (
-                <blockquote className="border-l-2 border-neutral-300 pl-8 my-12 text-neutral-600 italic text-xl">
+                <blockquote className="border-l-2 border-sage-300 pl-8 my-12 text-warm-700 italic text-xl">
                   {children}
                 </blockquote>
               ),
               code: ({children}) => (
-                <code className="bg-neutral-100 text-neutral-800 px-2 py-1 rounded text-base">
+                <code className="bg-sage-100 text-warm-800 px-2 py-1 rounded text-base">
                   {children}
                 </code>
               ),
               pre: ({children}) => (
-                <pre className="bg-neutral-100 p-8 rounded-lg overflow-x-auto my-12 text-base">
+                <pre className="bg-sage-100 p-8 rounded-lg overflow-x-auto my-12 text-base">
                   {children}
                 </pre>
               ),
@@ -93,8 +93,8 @@ export default function ViewPost() {
                   className="w-full rounded-lg my-12"
                 />
               ),
-              ul: ({children}) => <ul className="text-neutral-700 mb-8 space-y-3 text-xl">{children}</ul>,
-              ol: ({children}) => <ol className="text-neutral-700 mb-8 space-y-3 text-xl">{children}</ol>,
+              ul: ({children}) => <ul className="text-warm-800 mb-8 space-y-3 text-xl">{children}</ul>,
+              ol: ({children}) => <ol className="text-warm-800 mb-8 space-y-3 text-xl">{children}</ol>,
               li: ({children}) => <li className="leading-relaxed">{children}</li>,
             }}
           >
@@ -103,8 +103,8 @@ export default function ViewPost() {
         </div>
         
         {/* Footer */}
-        <div className="border-t border-neutral-200 mt-20 pt-12">
-          <p className="text-neutral-500 text-sm">
+        <div className="border-t border-sage-200 mt-20 pt-12">
+          <p className="text-warm-600 text-sm">
             Published on {post.createdAt?.toDate().toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',

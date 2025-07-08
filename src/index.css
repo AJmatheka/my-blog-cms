@@ -6,10 +6,10 @@
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.6;
-  color: #171717;
-  background-color: #fafafa;
+  color: #42462e;
+  background-color: #fefae0;
 }
 
 /* Custom scrollbar */
@@ -18,22 +18,23 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f5f5f5;
+  background: #f0f2eb;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d4d4d4;
+  background: #ccd5ae;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a3a3a3;
+  background: #b5c088;
 }
 
 /* Typography improvements */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 200;
   letter-spacing: -0.025em;
+  color: #42462e;
 }
 
 /* Focus states */
@@ -44,16 +45,69 @@ textarea:focus {
 
 /* Selection */
 ::selection {
-  background-color: #e5e5e5;
-  color: #171717;
+  background-color: #e9edc9;
+  color: #42462e;
 }
 
 /* Smooth transitions */
 * {
-  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Ultra-light font weight class */
 .font-extralight {
   font-weight: 200;
+}
+
+/* Custom styles for react-mde */
+.prose-editor .react-mde {
+  @apply bg-cream-100/50 border border-sage-200 rounded-lg overflow-hidden;
+}
+
+.prose-editor .mde-header {
+  @apply bg-sage-100/50 border-b border-sage-200;
+}
+
+.prose-editor .mde-header .mde-tabs button {
+  @apply text-warm-700 hover:text-warm-900 transition-colors;
+}
+
+.prose-editor .mde-header .mde-tabs button.selected {
+  @apply text-warm-900 border-b-2 border-warm-600;
+}
+
+.prose-editor .mde-text {
+  @apply bg-transparent text-warm-900;
+}
+
+.prose-editor .mde-text textarea {
+  @apply bg-transparent text-warm-900 placeholder-warm-600 border-none focus:outline-none;
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+.prose-editor .mde-preview .mde-preview-content {
+  @apply text-warm-800 bg-transparent;
+}
+
+.prose-editor .mde-preview .mde-preview-content h1,
+.prose-editor .mde-preview .mde-preview-content h2,
+.prose-editor .mde-preview .mde-preview-content h3 {
+  @apply text-warm-900 font-serif;
+}
+
+.prose-editor .mde-preview .mde-preview-content p {
+  @apply text-warm-800 leading-relaxed;
+}
+
+.prose-editor .mde-preview .mde-preview-content blockquote {
+  @apply border-l-4 border-sage-300 pl-4 text-warm-700 italic;
+}
+
+.prose-editor .mde-preview .mde-preview-content code {
+  @apply bg-sage-100 text-warm-800 px-2 py-1 rounded;
+}
+
+.prose-editor .mde-preview .mde-preview-content pre {
+  @apply bg-sage-100 p-4 rounded overflow-x-auto;
 }

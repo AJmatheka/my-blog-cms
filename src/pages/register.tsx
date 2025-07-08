@@ -20,14 +20,14 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50 flex items-center justify-center px-8">
+    <div className="min-h-screen bg-cream-100 flex items-center justify-center px-8">
       <div className="w-full max-w-md">
         <div className="text-center mb-16">
-          <div className="w-12 h-12 bg-neutral-900 rounded-full mx-auto mb-8"></div>
-          <h1 className="text-4xl font-light text-neutral-900 mb-4">
+          <div className="w-12 h-12 bg-warm-600 rounded-full mx-auto mb-8"></div>
+          <h1 className="text-4xl font-light text-warm-900 mb-4">
             Start your journey
           </h1>
-          <p className="text-neutral-600 text-lg">
+          <p className="text-warm-700 text-lg">
             Create an account to begin writing
           </p>
         </div>
@@ -41,7 +41,7 @@ export default function Register() {
           
           <div>
             <input
-              className="w-full bg-transparent border-b border-neutral-300 pb-3 text-neutral-900 placeholder-neutral-500 focus:outline-none focus:border-neutral-900 transition-colors text-lg"
+              className="w-full bg-transparent border-b border-sage-300 pb-3 text-warm-900 placeholder-warm-600 focus:outline-none focus:border-warm-600 transition-colors text-lg"
               type="email"
               placeholder="Email address"
               value={email}
@@ -52,7 +52,7 @@ export default function Register() {
           
           <div>
             <input
-              className="w-full bg-transparent border-b border-neutral-300 pb-3 text-neutral-900 placeholder-neutral-500 focus:outline-none focus:border-neutral-900 transition-colors text-lg"
+              className="w-full bg-transparent border-b border-sage-300 pb-3 text-warm-900 placeholder-warm-600 focus:outline-none focus:border-warm-600 transition-colors text-lg"
               type="password"
               placeholder="Password"
               value={password}
@@ -63,15 +63,15 @@ export default function Register() {
           
           <button 
             type="submit"
-            className="w-full bg-neutral-900 hover:bg-neutral-700 text-white py-4 rounded-full font-medium transition-colors text-lg"
+            className="w-full bg-warm-600 hover:bg-warm-700 text-cream-50 py-4 rounded-full font-medium transition-colors text-lg"
           >
             Create account
           </button>
         </form>
         
-        <p className="text-center mt-12 text-neutral-500">
+        <p className="text-center mt-12 text-warm-600">
           Already have an account?{' '}
-          <Link to="/login" className="text-neutral-900 hover:text-neutral-600 transition-colors font-medium">
+          <Link to="/login" className="text-warm-800 hover:text-warm-900 transition-colors font-medium">
             Sign in
           </Link>
         </p>
