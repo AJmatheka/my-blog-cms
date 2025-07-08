@@ -19,34 +19,32 @@ export default function Layout({ children, showHeader = true }: LayoutProps) {
   }
 
   return (
-    <div className="min-h-screen bg-champagne_pink-900">
+    <div className="min-h-screen bg-neutral-50">
       {showHeader && (
-        <header className="border-b border-sage-300/20 bg-champagne_pink-900/80 backdrop-blur-sm sticky top-0 z-50">
-          <div className="max-w-6xl mx-auto px-6 py-6">
+        <header className="border-b border-neutral-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+          <div className="max-w-5xl mx-auto px-8 py-6">
             <div className="flex items-center justify-between">
               <div 
                 onClick={() => navigate('/dashboard')}
                 className="cursor-pointer"
               >
-                <h1 className="text-2xl font-serif text-reseda_green-100 tracking-tight">
+                <div className="w-8 h-8 bg-neutral-900 rounded-full mb-2"></div>
+                <h1 className="text-lg font-medium text-neutral-900 tracking-tight">
                   Moments
                 </h1>
-                <p className="text-sm text-sage-400 mt-1">
-                  Stories that matter
-                </p>
               </div>
               
               {user && (
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-8">
                   <button
                     onClick={() => navigate('/editor')}
-                    className="text-reseda_green-300 hover:text-reseda_green-100 transition-colors text-sm font-medium"
+                    className="text-neutral-600 hover:text-neutral-900 transition-colors text-sm font-medium"
                   >
                     Write
                   </button>
                   <button
                     onClick={handleSignOut}
-                    className="text-sage-400 hover:text-reseda_green-300 transition-colors text-sm"
+                    className="text-neutral-500 hover:text-neutral-700 transition-colors text-sm"
                   >
                     Sign out
                   </button>

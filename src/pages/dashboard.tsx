@@ -34,113 +34,118 @@ export default function Dashboard() {
     setPosts(posts.filter((post) => post.id !== id))
   }
 
-
   return (
     <Layout>
-      <div className="max-w-4xl mx-auto px-6 py-16">
-        {/* Header Section */}
-        <div className="mb-20">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <h1 className="text-4xl font-serif text-reseda_green-100 mb-4 tracking-tight">
-                Your Stories
-              </h1>
-              <p className="text-sage-400 text-lg">
-                {filteredPosts.length} {filteredPosts.length === 1 ? 'story' : 'stories'}
-              </p>
-            </div>
-            <button
-              onClick={() => navigate("/editor")}
-              className="bg-buff-500 hover:bg-buff-400 text-champagne_pink-900 px-8 py-3 rounded-full font-medium transition-all duration-200 shadow-sm hover:shadow-md"
-            >
-              New Story
-            </button>
-          </div>
-          
-          {/* Search */}
-          <div className="relative max-w-md">
-            <input
-              type="text"
-              placeholder="Search stories..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-champagne_pink-800/30 border border-sage-300/20 rounded-full px-6 py-3 text-reseda_green-100 placeholder-sage-400 focus:outline-none focus:border-buff-400 transition-colors"
-            />
-          </div>
+      <div className="max-w-4xl mx-auto px-8 py-20">
+        {/* Hero Section */}
+        <div className="mb-32">
+          <h1 className="text-6xl font-light text-neutral-900 mb-8 tracking-tight leading-tight">
+            Moments that matter —
+          </h1>
+          <p className="text-xl text-neutral-600 leading-relaxed max-w-2xl">
+            We change the world with our thoughts, experiences, and actions. 
+            Every moment is valuable, every experience worth remembering and 
+            every thought worth sharing.
+          </p>
         </div>
 
-        {/* Posts Grid */}
-        <div className="space-y-12">
+        {/* Search and Actions */}
+        <div className="flex items-center justify-between mb-20">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search posts"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="bg-transparent border-b border-neutral-300 pb-2 text-neutral-900 placeholder-neutral-500 focus:outline-none focus:border-neutral-900 transition-colors w-80"
+            />
+          </div>
+          <button
+            onClick={() => navigate("/editor")}
+            className="text-neutral-900 hover:text-neutral-600 transition-colors font-medium"
+          >
+            Write new post →
+          </button>
+        </div>
+
+        {/* Posts */}
+        <div className="space-y-20">
           {filteredPosts.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-sage-400 text-lg mb-6">No stories yet</p>
+            <div className="text-center py-32">
+              <p className="text-neutral-500 text-lg mb-8">No stories yet</p>
               <button
                 onClick={() => navigate("/editor")}
-                className="text-buff-400 hover:text-buff-300 transition-colors font-medium"
+                className="text-neutral-900 hover:text-neutral-600 transition-colors font-medium"
               >
                 Write your first story →
               </button>
             </div>
           ) : (
-            filteredPosts.map((post) => (
+            filteredPosts.map((post, index) => (
               <article key={post.id} className="group cursor-pointer" onClick={() => navigate(`/post/${post.id}`)}>
-                <div className="border-b border-sage-300/10 pb-12 hover:border-sage-300/20 transition-colors">
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="flex-1">
-                      <h2 className="text-2xl font-serif text-reseda_green-100 mb-3 group-hover:text-buff-400 transition-colors leading-tight">
-                        {post.title}
-                      </h2>
-                      
-                      {/* Tags */}
-                      {post.tags?.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {post.tags.map((tag: string) => (
-                            <span
-                              key={tag}
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                setSearch(tag)
-                              }}
-                              className="text-xs text-sage-400 hover:text-buff-400 transition-colors cursor-pointer"
-                            >
-                              #{tag}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                      
-                      <p className="text-sage-400 text-sm">
+                <div className="grid grid-cols-12 gap-8 items-start">
+                  {/* Content */}
+                  <div className="col-span-8">
+                    <h2 className="text-3xl font-light text-neutral-900 mb-4 group-hover:text-neutral-600 transition-colors leading-tight">
+                      {post.title}
+                    </h2>
+                    
+                    <p className="text-neutral-600 leading-relaxed mb-6 text-lg">
+                      {post.content?.substring(0, 200)}...
+                    </p>
+                    
+                    <div className="flex items-center gap-6 text-sm text-neutral-500">
+                      <span>
                         {post.createdAt?.toDate().toLocaleDateString('en-US', {
                           year: 'numeric',
                           month: 'long',
                           day: 'numeric'
                         })}
-                      </p>
-                    </div>
-                    
-                    {/* Actions */}
-                    <div className="flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity ml-6">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          navigate(`/editor/${post.id}`)
-                        }}
-                        className="text-sage-400 hover:text-buff-400 transition-colors text-sm"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          handleDelete(post.id)
-                        }}
-                        className="text-sage-400 hover:text-red-400 transition-colors text-sm"
-                      >
-                        Delete
-                      </button>
+                      </span>
+                      
+                      {post.tags?.length > 0 && (
+                        <div className="flex gap-2">
+                          {post.tags.slice(0, 3).map((tag: string) => (
+                            <span key={tag} className="text-neutral-400">
+                              #{tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
+                  
+                  {/* Image placeholder */}
+                  <div className="col-span-4">
+                    <div className="aspect-[4/3] bg-gradient-to-br from-orange-200 via-orange-300 to-orange-400 rounded-lg"></div>
+                  </div>
                 </div>
+                
+                {/* Actions */}
+                <div className="flex items-center gap-6 mt-8 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      navigate(`/editor/${post.id}`)
+                    }}
+                    className="text-neutral-500 hover:text-neutral-900 transition-colors text-sm"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleDelete(post.id)
+                    }}
+                    className="text-neutral-500 hover:text-red-500 transition-colors text-sm"
+                  >
+                    Delete
+                  </button>
+                </div>
+                
+                {index < filteredPosts.length - 1 && (
+                  <div className="border-b border-neutral-200 mt-20"></div>
+                )}
               </article>
             ))
           )}

@@ -31,7 +31,7 @@ export default function EditorPage() {
           setTitle(post.title)
           setContent(post.content)
           setTags(post.tags || [])
-          setTagsInput("") // We now use chips, so clear input
+          setTagsInput("")
         }
       }
     }
@@ -88,39 +88,41 @@ export default function EditorPage() {
 
   return (
     <Layout>
-      <div className="max-w-4xl mx-auto px-6 py-16">
-        <div className="mb-12">
-          <h1 className="text-3xl font-serif text-reseda_green-100 mb-2">
-            {postId ? 'Edit Story' : 'New Story'}
+      <div className="max-w-4xl mx-auto px-8 py-20">
+        <div className="mb-16">
+          <h1 className="text-4xl font-light text-neutral-900 mb-4">
+            {postId ? 'Edit Story' : 'Write Something New'}
           </h1>
-          <p className="text-sage-400">
+          <p className="text-neutral-600 text-lg">
             Share your thoughts with the world
           </p>
         </div>
         
-        <div className="space-y-8">
+        <div className="space-y-12">
           {/* Title Input */}
-          <input
-            className="w-full bg-transparent border-none text-4xl font-serif text-reseda_green-100 placeholder-sage-400 focus:outline-none"
-            placeholder="Story title..."
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
+          <div>
+            <input
+              className="w-full bg-transparent border-none text-5xl font-light text-neutral-900 placeholder-neutral-400 focus:outline-none leading-tight"
+              placeholder="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
 
           {/* Tags */}
           <div>
-            <label className="block text-sage-400 mb-3 text-sm">Tags</label>
-            <div className="flex flex-wrap gap-2 items-center bg-champagne_pink-800/20 border border-sage-300/20 rounded-lg p-4 min-h-[60px]">
+            <label className="block text-neutral-600 mb-4 text-sm font-medium">Tags</label>
+            <div className="flex flex-wrap gap-3 items-center border-b border-neutral-200 pb-4 min-h-[60px]">
               {tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="flex items-center gap-2 bg-buff-500/20 text-buff-300 px-3 py-1 rounded-full text-sm"
+                  className="flex items-center gap-2 bg-neutral-100 text-neutral-700 px-3 py-1 rounded-full text-sm"
                 >
                   #{tag}
                   <button
                     type="button"
                     onClick={() => handleRemoveTag(index)}
-                    className="text-buff-400 hover:text-red-400 transition-colors"
+                    className="text-neutral-500 hover:text-red-500 transition-colors"
                   >
                     ×
                   </button>
@@ -132,12 +134,12 @@ export default function EditorPage() {
                 onChange={(e) => setTagsInput(e.target.value)}
                 onKeyDown={handleAddTag}
                 placeholder={tags.length >= 5 ? "" : "Add tag..."}
-                className="flex-1 min-w-[120px] bg-transparent text-reseda_green-100 placeholder-sage-400 focus:outline-none"
+                className="flex-1 min-w-[120px] bg-transparent text-neutral-900 placeholder-neutral-400 focus:outline-none"
                 disabled={tags.length >= 5}
               />
             </div>
             {tags.length >= 5 && (
-              <p className="text-sm text-red-400 mt-2">
+              <p className="text-sm text-red-500 mt-2">
                 Maximum 5 tags allowed
               </p>
             )}
@@ -145,17 +147,48 @@ export default function EditorPage() {
 
           {/* Image Upload */}
           <div>
-            <label className="block text-sage-400 mb-3 text-sm">Add Image</label>
+            <label className="block text-neutral-600 mb-4 text-sm font-medium">Add Image</label>
             <input
               type="file"
               accept="image/*"
               onChange={handleImageUpload}
-              className="block w-full text-sage-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-medium file:bg-buff-500/20 file:text-buff-300 hover:file:bg-buff-500/30 transition-colors"
+              className="block w-full text-neutral-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-medium file:bg-neutral-100 file:text-neutral-700 hover:file:bg-neutral-200 transition-colors"
             />
           </div>
 
           {/* Markdown Editor */}
-          <div className="prose-editor">
+          <div className="editor-container">
+            <style jsx>{`
+              .editor-container .react-mde {
+                border: 1px solid #e5e5e5;
+                border-radius: 8px;
+                background: white;
+              }
+              .editor-container .mde-header {
+                background: #fafafa;
+                border-bottom: 1px solid #e5e5e5;
+              }
+              .editor-container .mde-header .mde-tabs button {
+                color: #737373;
+                font-weight: 500;
+              }
+              .editor-container .mde-header .mde-tabs button.selected {
+                color: #171717;
+                border-bottom: 2px solid #171717;
+              }
+              .editor-container .mde-text textarea {
+                color: #171717;
+                font-size: 16px;
+                line-height: 1.6;
+                padding: 24px;
+              }
+              .editor-container .mde-preview .mde-preview-content {
+                color: #404040;
+                padding: 24px;
+                font-size: 16px;
+                line-height: 1.6;
+              }
+            `}</style>
             <ReactMde
               value={content}
               onChange={setContent}
@@ -168,19 +201,19 @@ export default function EditorPage() {
           </div>
 
           {/* Actions */}
-          <div className="flex items-center justify-between pt-8 border-t border-sage-300/20">
+          <div className="flex items-center justify-between pt-12 border-t border-neutral-200">
             <button
               onClick={() => navigate('/dashboard')}
-              className="text-sage-400 hover:text-reseda_green-300 transition-colors"
+              className="text-neutral-500 hover:text-neutral-900 transition-colors"
             >
-              ← Back to stories
+              ← Back
             </button>
             
             <button
               onClick={handleSave}
-              className="bg-buff-500 hover:bg-buff-400 text-champagne_pink-900 px-8 py-3 rounded-full font-medium transition-colors"
+              className="bg-neutral-900 hover:bg-neutral-700 text-white px-8 py-3 rounded-full font-medium transition-colors"
             >
-              {postId ? "Update Story" : "Publish Story"}
+              {postId ? "Update" : "Publish"}
             </button>
           </div>
         </div>
