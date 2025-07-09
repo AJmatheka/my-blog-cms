@@ -2,39 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.6;
-  color: #42462e;
-  background-color: #fefae0;
+  color: #f8f9fa;
+  background-color: #1a1d20;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f0f2eb;
+  background: #212529;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ccd5ae;
-  border-radius: 3px;
+  background: #495057;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b5c088;
+  background: #6c757d;
 }
 
 /* Typography improvements */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 200;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-weight: 700;
   letter-spacing: -0.025em;
-  color: #42462e;
+  color: #f8f9fa;
 }
 
 /* Focus states */
@@ -45,8 +47,8 @@ textarea:focus {
 
 /* Selection */
 ::selection {
-  background-color: #e9edc9;
-  color: #42462e;
+  background-color: #ff6b35;
+  color: #ffffff;
 }
 
 /* Smooth transitions */
@@ -54,60 +56,68 @@ textarea:focus {
   transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Ultra-light font weight class */
-.font-extralight {
-  font-weight: 200;
+/* Magazine-style components */
+.magazine-card {
+  @apply bg-dark-800 border border-dark-600 rounded-lg overflow-hidden hover:border-dark-500 transition-all duration-300;
+}
+
+.magazine-button {
+  @apply bg-accent-orange hover:bg-accent-orange/90 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300;
+}
+
+.magazine-input {
+  @apply bg-dark-800 border border-dark-600 text-neutral-100 placeholder-neutral-400 px-4 py-3 rounded-lg focus:border-accent-orange focus:ring-1 focus:ring-accent-orange transition-all duration-300;
 }
 
 /* Custom styles for react-mde */
 .prose-editor .react-mde {
-  @apply bg-cream-100/50 border border-sage-200 rounded-lg overflow-hidden;
+  @apply bg-dark-800 border border-dark-600 rounded-lg overflow-hidden;
 }
 
 .prose-editor .mde-header {
-  @apply bg-sage-100/50 border-b border-sage-200;
+  @apply bg-dark-700 border-b border-dark-600;
 }
 
 .prose-editor .mde-header .mde-tabs button {
-  @apply text-warm-700 hover:text-warm-900 transition-colors;
+  @apply text-neutral-300 hover:text-white transition-colors;
 }
 
 .prose-editor .mde-header .mde-tabs button.selected {
-  @apply text-warm-900 border-b-2 border-warm-600;
+  @apply text-white border-b-2 border-accent-orange;
 }
 
 .prose-editor .mde-text {
-  @apply bg-transparent text-warm-900;
+  @apply bg-transparent text-neutral-100;
 }
 
 .prose-editor .mde-text textarea {
-  @apply bg-transparent text-warm-900 placeholder-warm-600 border-none focus:outline-none;
+  @apply bg-transparent text-neutral-100 placeholder-neutral-400 border-none focus:outline-none;
   font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.6;
 }
 
 .prose-editor .mde-preview .mde-preview-content {
-  @apply text-warm-800 bg-transparent;
+  @apply text-neutral-200 bg-transparent;
 }
 
 .prose-editor .mde-preview .mde-preview-content h1,
 .prose-editor .mde-preview .mde-preview-content h2,
 .prose-editor .mde-preview .mde-preview-content h3 {
-  @apply text-warm-900 font-serif;
+  @apply text-white font-display;
 }
 
 .prose-editor .mde-preview .mde-preview-content p {
-  @apply text-warm-800 leading-relaxed;
+  @apply text-neutral-200 leading-relaxed;
 }
 
 .prose-editor .mde-preview .mde-preview-content blockquote {
-  @apply border-l-4 border-sage-300 pl-4 text-warm-700 italic;
+  @apply border-l-4 border-accent-orange pl-4 text-neutral-300 italic;
 }
 
 .prose-editor .mde-preview .mde-preview-content code {
-  @apply bg-sage-100 text-warm-800 px-2 py-1 rounded;
+  @apply bg-dark-700 text-neutral-200 px-2 py-1 rounded;
 }
 
 .prose-editor .mde-preview .mde-preview-content pre {
-  @apply bg-sage-100 p-4 rounded overflow-x-auto;
+  @apply bg-dark-700 p-4 rounded overflow-x-auto;
 }

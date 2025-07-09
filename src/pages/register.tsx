@@ -20,30 +20,36 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen bg-cream-100 flex items-center justify-center px-8">
+    <div className="min-h-screen bg-dark-900 flex items-center justify-center px-6">
       <div className="w-full max-w-md">
-        <div className="text-center mb-16">
-          <div className="w-12 h-12 bg-warm-600 rounded-full mx-auto mb-8"></div>
-          <h1 className="text-4xl font-light text-warm-900 mb-4">
-            Start your journey
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center gap-2 mb-8">
+            <div className="w-4 h-4 bg-accent-orange rounded-full"></div>
+            <div className="w-4 h-4 bg-accent-red rounded-full"></div>
+          </div>
+          <h1 className="text-4xl font-display font-bold text-white mb-4">
+            THE CANVAS
           </h1>
-          <p className="text-warm-700 text-lg">
-            Create an account to begin writing
+          <p className="text-neutral-400 text-lg">
+            Join our creative community
           </p>
         </div>
         
-        <form onSubmit={handleRegister} className="space-y-8">
+        <form onSubmit={handleRegister} className="space-y-6">
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-600 px-6 py-4 rounded-lg text-sm">
+            <div className="bg-accent-red/10 border border-accent-red/20 text-accent-red px-6 py-4 rounded-lg text-sm">
               {error}
             </div>
           )}
           
           <div>
+            <label className="block text-neutral-300 text-sm font-medium mb-2">
+              Email Address
+            </label>
             <input
-              className="w-full bg-transparent border-b border-sage-300 pb-3 text-warm-900 placeholder-warm-600 focus:outline-none focus:border-warm-600 transition-colors text-lg"
+              className="w-full magazine-input"
               type="email"
-              placeholder="Email address"
+              placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -51,10 +57,13 @@ export default function Register() {
           </div>
           
           <div>
+            <label className="block text-neutral-300 text-sm font-medium mb-2">
+              Password
+            </label>
             <input
-              className="w-full bg-transparent border-b border-sage-300 pb-3 text-warm-900 placeholder-warm-600 focus:outline-none focus:border-warm-600 transition-colors text-lg"
+              className="w-full magazine-input"
               type="password"
-              placeholder="Password"
+              placeholder="Create a password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -63,18 +72,26 @@ export default function Register() {
           
           <button 
             type="submit"
-            className="w-full bg-warm-600 hover:bg-warm-700 text-cream-50 py-4 rounded-full font-medium transition-colors text-lg"
+            className="w-full magazine-button py-4 text-lg"
           >
-            Create account
+            Create Account
           </button>
         </form>
         
-        <p className="text-center mt-12 text-warm-600">
-          Already have an account?{' '}
-          <Link to="/login" className="text-warm-800 hover:text-warm-900 transition-colors font-medium">
-            Sign in
-          </Link>
-        </p>
+        <div className="text-center mt-8">
+          <p className="text-neutral-400">
+            Already have an account?{' '}
+            <Link to="/login" className="text-accent-orange hover:text-accent-orange/80 transition-colors font-medium">
+              Sign in here
+            </Link>
+          </p>
+        </div>
+        
+        <div className="border-t border-dark-700 mt-12 pt-8 text-center">
+          <p className="text-neutral-500 text-sm">
+            Start sharing your stories with the world
+          </p>
+        </div>
       </div>
     </div>
   )

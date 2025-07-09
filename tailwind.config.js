@@ -7,59 +7,49 @@ export default {
   theme: {
     extend: {
       colors: {
-        // New minimal color palette
-        sage: {
-          50: '#f8f9f6',
-          100: '#f0f2eb',
-          200: '#e1e5d6',
-          300: '#ccd5ae', // Primary sage
-          400: '#b5c088',
-          500: '#9ea862',
-          600: '#7d8650',
-          700: '#626742',
-          800: '#4f5336',
-          900: '#42462e'
+        // Magazine-style dark theme
+        dark: {
+          50: '#f8f9fa',
+          100: '#e9ecef',
+          200: '#dee2e6',
+          300: '#ced4da',
+          400: '#adb5bd',
+          500: '#6c757d',
+          600: '#495057',
+          700: '#343a40',
+          800: '#212529',
+          900: '#1a1d20',
+          950: '#0d1117'
         },
-        cream: {
-          50: '#fefdfb',
-          100: '#fefae0', // Light cream
-          200: '#fcf6d1',
-          300: '#f9f0b8',
-          400: '#f5e99f',
-          500: '#f0e186',
-          600: '#e6d46d',
-          700: '#d4c054',
-          800: '#b8a545',
-          900: '#9c8a37'
+        accent: {
+          orange: '#ff6b35',
+          red: '#e74c3c',
+          blue: '#3498db',
+          green: '#2ecc71',
+          yellow: '#f1c40f'
         },
-        warm: {
-          50: '#fefcf9',
-          100: '#faedcd', // Warm beige
-          200: '#f5e1b3',
-          300: '#f0d599',
-          400: '#ebc97f',
-          500: '#e6bd65',
-          600: '#d4a373', // Warm brown
-          700: '#c1924f',
-          800: '#a67c42',
-          900: '#8b6635'
-        },
-        mint: {
-          50: '#f7faf7',
-          100: '#e9edc9', // Soft mint
-          200: '#dde5b5',
-          300: '#d1dda1',
-          400: '#c5d58d',
-          500: '#b9cd79',
-          600: '#a8c065',
-          700: '#97b351',
-          800: '#7d9543',
-          900: '#637735'
+        neutral: {
+          50: '#fafafa',
+          100: '#f5f5f5',
+          200: '#e5e5e5',
+          300: '#d4d4d4',
+          400: '#a3a3a3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#262626',
+          900: '#171717'
         }
       },
       fontFamily: {
-        'serif': ['Georgia', 'Times New Roman', 'serif'],
+        'display': ['Georgia', 'Times New Roman', 'serif'],
         'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'mono': ['JetBrains Mono', 'Consolas', 'monospace']
+      },
+      fontSize: {
+        'display': ['4rem', { lineHeight: '1', letterSpacing: '-0.02em' }],
+        'hero': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'title': ['2rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
       },
       spacing: {
         '18': '4.5rem',

@@ -88,102 +88,138 @@ export default function EditorPage() {
 
   return (
     <Layout>
-      <div className="max-w-4xl mx-auto px-8 py-20">
-        <div className="mb-16">
-          <h1 className="text-4xl font-light text-warm-900 mb-4">
-            {postId ? 'Edit Story' : 'Write Something New'}
+      <div className="max-w-5xl mx-auto px-6 py-12">
+        <div className="mb-12">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 bg-accent-orange rounded-full"></div>
+              <div className="w-3 h-3 bg-accent-red rounded-full"></div>
+            </div>
+            <span className="text-accent-orange text-sm font-semibold uppercase tracking-wider">
+              {postId ? 'Edit Story' : 'New Story'}
+            </span>
+          </div>
+          
+          <h1 className="text-5xl font-display font-bold text-white mb-4">
+            {postId ? 'Edit Your Story' : 'Create Something Amazing'}
           </h1>
-          <p className="text-warm-700 text-lg">
-            Share your thoughts with the world
+          <p className="text-neutral-400 text-xl">
+            Share your thoughts and inspire others
           </p>
         </div>
         
-        <div className="space-y-12">
-          {/* Title Input */}
-          <div>
-            <input
-              className="w-full bg-transparent border-none text-5xl font-light text-warm-900 placeholder-warm-600 focus:outline-none leading-tight"
-              placeholder="Title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          {/* Main Editor */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Title Input */}
+            <div>
+              <label className="block text-neutral-300 text-sm font-medium mb-3 uppercase tracking-wider">
+                Story Title
+              </label>
+              <input
+                className="w-full bg-transparent border-b-2 border-dark-600 focus:border-accent-orange text-4xl font-display font-bold text-white placeholder-neutral-500 focus:outline-none pb-4 transition-colors"
+                placeholder="Enter your story title..."
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+
+            {/* Markdown Editor */}
+            <div>
+              <label className="block text-neutral-300 text-sm font-medium mb-3 uppercase tracking-wider">
+                Content
+              </label>
+              <div className="prose-editor">
+                <ReactMde
+                  value={content}
+                  onChange={setContent}
+                  selectedTab={selectedTab}
+                  onTabChange={setSelectedTab}
+                  generateMarkdownPreview={(markdown) =>
+                    Promise.resolve(converter.makeHtml(markdown))
+                  }
+                />
+              </div>
+            </div>
           </div>
 
-          {/* Tags */}
-          <div>
-            <label className="block text-warm-700 mb-4 text-sm font-medium">Tags</label>
-            <div className="flex flex-wrap gap-3 items-center border-b border-sage-200 pb-4 min-h-[60px]">
-              {tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="flex items-center gap-2 bg-sage-100 text-warm-800 px-3 py-1 rounded-full text-sm"
-                >
-                  #{tag}
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveTag(index)}
-                    className="text-warm-600 hover:text-red-500 transition-colors"
+          {/* Sidebar */}
+          <div className="space-y-8">
+            {/* Tags */}
+            <div className="magazine-card p-6">
+              <h3 className="text-white font-display font-bold text-xl mb-4">Tags</h3>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="flex items-center gap-2 bg-accent-orange/20 text-accent-orange px-3 py-1 rounded-full text-sm font-medium"
                   >
-                    ×
-                  </button>
-                </span>
-              ))}
+                    #{tag}
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveTag(index)}
+                      className="text-accent-orange hover:text-white transition-colors"
+                    >
+                      ×
+                    </button>
+                  </span>
+                ))}
+              </div>
               <input
                 type="text"
                 value={tagsInput}
                 onChange={(e) => setTagsInput(e.target.value)}
                 onKeyDown={handleAddTag}
-                placeholder={tags.length >= 5 ? "" : "Add tag..."}
-                className="flex-1 min-w-[120px] bg-transparent text-warm-900 placeholder-warm-600 focus:outline-none"
+                placeholder={tags.length >= 5 ? "Max 5 tags" : "Add tag and press Enter..."}
+                className="w-full magazine-input"
                 disabled={tags.length >= 5}
               />
+              {tags.length >= 5 && (
+                <p className="text-accent-red text-sm mt-2">
+                  Maximum 5 tags allowed
+                </p>
+              )}
             </div>
-            {tags.length >= 5 && (
-              <p className="text-sm text-red-500 mt-2">
-                Maximum 5 tags allowed
+
+            {/* Image Upload */}
+            <div className="magazine-card p-6">
+              <h3 className="text-white font-display font-bold text-xl mb-4">Add Media</h3>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="block w-full text-neutral-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-accent-orange file:text-white hover:file:bg-accent-orange/90 transition-colors"
+              />
+              <p className="text-neutral-400 text-sm mt-2">
+                Upload images to enhance your story
               </p>
-            )}
-          </div>
+            </div>
 
-          {/* Image Upload */}
-          <div>
-            <label className="block text-warm-700 mb-4 text-sm font-medium">Add Image</label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="block w-full text-warm-700 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-medium file:bg-sage-100 file:text-warm-800 hover:file:bg-sage-200 transition-colors"
-            />
-          </div>
-
-          {/* Markdown Editor */}
-          <div className="prose-editor">
-            <ReactMde
-              value={content}
-              onChange={setContent}
-              selectedTab={selectedTab}
-              onTabChange={setSelectedTab}
-              generateMarkdownPreview={(markdown) =>
-                Promise.resolve(converter.makeHtml(markdown))
-              }
-            />
-          </div>
-
-          {/* Actions */}
-          <div className="flex items-center justify-between pt-12 border-t border-sage-200">
-            <button
-              onClick={() => navigate('/dashboard')}
-              className="text-warm-600 hover:text-warm-800 transition-colors"
-            >
-              ← Back
-            </button>
-            
-            <button
-              onClick={handleSave}
-              className="bg-warm-600 hover:bg-warm-700 text-cream-50 px-8 py-3 rounded-full font-medium transition-colors"
-            >
-              {postId ? "Update" : "Publish"}
-            </button>
+            {/* Publishing Options */}
+            <div className="magazine-card p-6">
+              <h3 className="text-white font-display font-bold text-xl mb-4">Publish</h3>
+              <div className="space-y-4">
+                <button
+                  onClick={handleSave}
+                  className="w-full magazine-button py-3"
+                >
+                  {postId ? "Update Story" : "Publish Story"}
+                </button>
+                
+                <button
+                  onClick={() => navigate('/dashboard')}
+                  className="w-full border border-neutral-600 hover:border-neutral-500 text-neutral-300 hover:text-white px-6 py-3 rounded-lg font-medium transition-colors"
+                >
+                  Cancel
+                </button>
+              </div>
+              
+              <div className="mt-6 pt-6 border-t border-dark-600">
+                <p className="text-neutral-400 text-sm">
+                  Your story will be published immediately and visible to all readers.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

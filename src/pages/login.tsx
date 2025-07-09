@@ -20,30 +20,36 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-cream-100 flex items-center justify-center px-8">
+    <div className="min-h-screen bg-dark-900 flex items-center justify-center px-6">
       <div className="w-full max-w-md">
-        <div className="text-center mb-16">
-          <div className="w-12 h-12 bg-warm-600 rounded-full mx-auto mb-8"></div>
-          <h1 className="text-4xl font-light text-warm-900 mb-4">
-            Welcome back
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center gap-2 mb-8">
+            <div className="w-4 h-4 bg-accent-orange rounded-full"></div>
+            <div className="w-4 h-4 bg-accent-red rounded-full"></div>
+          </div>
+          <h1 className="text-4xl font-display font-bold text-white mb-4">
+            THE CANVAS
           </h1>
-          <p className="text-warm-700 text-lg">
-            Sign in to continue your stories
+          <p className="text-neutral-400 text-lg">
+            Sign in to continue your creative journey
           </p>
         </div>
         
-        <form onSubmit={handleLogin} className="space-y-8">
+        <form onSubmit={handleLogin} className="space-y-6">
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-600 px-6 py-4 rounded-lg text-sm">
+            <div className="bg-accent-red/10 border border-accent-red/20 text-accent-red px-6 py-4 rounded-lg text-sm">
               {error}
             </div>
           )}
           
           <div>
+            <label className="block text-neutral-300 text-sm font-medium mb-2">
+              Email Address
+            </label>
             <input
-              className="w-full bg-transparent border-b border-sage-300 pb-3 text-warm-900 placeholder-warm-600 focus:outline-none focus:border-warm-600 transition-colors text-lg"
+              className="w-full magazine-input"
               type="email"
-              placeholder="Email address"
+              placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -51,10 +57,13 @@ export default function Login() {
           </div>
           
           <div>
+            <label className="block text-neutral-300 text-sm font-medium mb-2">
+              Password
+            </label>
             <input
-              className="w-full bg-transparent border-b border-sage-300 pb-3 text-warm-900 placeholder-warm-600 focus:outline-none focus:border-warm-600 transition-colors text-lg"
+              className="w-full magazine-input"
               type="password"
-              placeholder="Password"
+              placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -63,18 +72,26 @@ export default function Login() {
           
           <button 
             type="submit"
-            className="w-full bg-warm-600 hover:bg-warm-700 text-cream-50 py-4 rounded-full font-medium transition-colors text-lg"
+            className="w-full magazine-button py-4 text-lg"
           >
-            Sign in
+            Sign In
           </button>
         </form>
         
-        <p className="text-center mt-12 text-warm-600">
-          Don't have an account?{' '}
-          <Link to="/register" className="text-warm-800 hover:text-warm-900 transition-colors font-medium">
-            Create one
-          </Link>
-        </p>
+        <div className="text-center mt-8">
+          <p className="text-neutral-400">
+            Don't have an account?{' '}
+            <Link to="/register" className="text-accent-orange hover:text-accent-orange/80 transition-colors font-medium">
+              Create one here
+            </Link>
+          </p>
+        </div>
+        
+        <div className="border-t border-dark-700 mt-12 pt-8 text-center">
+          <p className="text-neutral-500 text-sm">
+            Join our community of creators and storytellers
+          </p>
+        </div>
       </div>
     </div>
   )
